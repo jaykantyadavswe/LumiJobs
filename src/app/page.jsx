@@ -52,19 +52,13 @@ export default function Home() {
           return false;
         }
 
-        if (
-          filters.salary &&
-          (job.salary_min == null || job.salary_min < 120000)
-        ) {
+        if (filters.salary && (job.salary_min == null || job.salary_min < 120000)) {
           return false;
         }
 
         return true;
       })
-      .sort(
-        (a, b) =>
-          (b.match_score ?? -1) - (a.match_score ?? -1)
-      );
+      .sort((a, b) => (b.match_score ?? -1) - (a.match_score ?? -1));
   }, [jobs, filters]);
 
   function toggleFilter(filterName) {
